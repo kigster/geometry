@@ -8,15 +8,15 @@ describe Geometry::Triangle do
     Triangle.new([0, 0], [0, 1], [1, 0]).closed?.must_equal true
   end
 
-  describe "when constructed with 3 points" do
+  describe 'when constructed with 3 points' do
     let(:triangle) { Triangle.new [0, 0], [0, 1], [1, 0] }
 
-    it "must create a scalene Triangle" do
+    it 'must create a scalene Triangle' do
       triangle.must_be_instance_of Geometry::ScaleneTriangle
       triangle.must_be_kind_of Triangle
     end
 
-    it "must have a points accessor" do
+    it 'must have a points accessor' do
       triangle.points.must_equal [Point[0, 0], Point[0, 1], Point[1, 0]]
     end
 
@@ -33,15 +33,15 @@ describe Geometry::Triangle do
     end
   end
 
-  describe "when constructed with a point and a leg length" do
+  describe 'when constructed with a point and a leg length' do
     let(:triangle) { Triangle.new [0, 0], 1 }
 
-    it "must create a right Triangle" do
+    it 'must create a right Triangle' do
       triangle.must_be_instance_of Geometry::RightTriangle
       triangle.must_be_kind_of(Triangle)
     end
 
-    it "must have a points accessor" do
+    it 'must have a points accessor' do
       triangle.points.must_equal [Point[0, 0], Point[0, 1], Point[1, 0]]
     end
   end

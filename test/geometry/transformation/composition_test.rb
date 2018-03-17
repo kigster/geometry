@@ -7,8 +7,8 @@ describe Geometry::Transformation::Composition do
 
   subject { Composition.new }
 
-  describe "when constructed" do
-    it "must accept multiple transformations" do
+  describe 'when constructed' do
+    it 'must accept multiple transformations' do
       composition = Composition.new(Transformation.new, Transformation.new)
       composition.size.must_equal 2
     end
@@ -18,30 +18,30 @@ describe Geometry::Transformation::Composition do
     end
   end
 
-  describe "attributes" do
-    describe "has_rotation?" do
-      it "must properly be true" do
+  describe 'attributes' do
+    describe 'has_rotation?' do
+      it 'must properly be true' do
         Composition.new(Transformation.new angle: 90).has_rotation?.must_equal true
       end
 
-      it "must properly be false" do
+      it 'must properly be false' do
         subject.has_rotation?.must_equal false
       end
     end
   end
 
-  describe "when composing" do
-    it "must append a Transformation" do
+  describe 'when composing' do
+    it 'must append a Transformation' do
       (Composition.new(Transformation.new) + Transformation.new).size.must_equal 2
     end
 
-    it "must merge with a Composition" do
+    it 'must merge with a Composition' do
       (Composition.new(Transformation.new) + Composition.new(Transformation.new)).size.must_equal 2
     end
   end
 
-  describe "when transforming a Point" do
-    it "must handle composed translations" do
+  describe 'when transforming a Point' do
+    it 'must handle composed translations' do
       composition = Composition.new(Transformation.new origin: [1, 2]) + Composition.new(Transformation.new [3, 4])
       composition.transform(Point[5, 6]).must_equal Point[9, 12]
     end
